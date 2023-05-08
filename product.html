@@ -155,12 +155,17 @@
 
   function fetchData() {
     const filters = new URLSearchParams(appliedFilters);
-    fetch(`http://localhost:3300/product/${filters ? `?${filters}` : ""}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://frantic-underwear-ray.cyclic.app/product/${
+        filters ? `?${filters}` : ""
+      }`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         if (res) {
