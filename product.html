@@ -17,7 +17,7 @@
       <div class="top_nav"></div>
       <div class="upper_nav_bar">
         <div class="logo">
-          <img src="/logo.png" alt="" />
+          <img src="./public/logo.png" alt="" />
         </div>
         <div class="services">
           <div>FREE TRY AT HOME</div>
@@ -156,9 +156,7 @@
   function fetchData() {
     const filters = new URLSearchParams(appliedFilters);
     fetch(
-      `https://frantic-underwear-ray.cyclic.app/product/${
-        filters ? `?${filters}` : ""
-      }`,
+      `https://jewelslane.onrender.com/product/${filters ? `?${filters}` : ""}`,
       {
         method: "GET",
         headers: {

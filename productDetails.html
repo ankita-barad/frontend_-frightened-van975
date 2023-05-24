@@ -17,7 +17,7 @@
       <div class="top_nav"></div>
       <div class="upper_nav_bar">
         <div class="logo">
-          <img src="/logo.png" alt="" />
+          <img src="./public/logo.png" alt="" />
         </div>
         <div class="services">
           <div>FREE TRY AT HOME</div>
@@ -127,7 +127,7 @@
 </html>
 <script>
   const id = window.location.search.split("=")[1];
-  fetch(`https://frantic-underwear-ray.cyclic.app/product/${id}`, {
+  fetch(`https://jewelslane.onrender.com/product/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -141,7 +141,7 @@
     .catch((err) => console.log(err));
 
   function addToCartAction(productId) {
-    fetch(`https://frantic-underwear-ray.cyclic.app/cart/`, {
+    fetch(`https://jewelslane.onrender.com/cart/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
