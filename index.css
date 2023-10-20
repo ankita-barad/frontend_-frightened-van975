@@ -24,20 +24,10 @@ img {
 .upper_nav_bar {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  height: 72px;
-  width: 100%;
   background-color: #f6f4ff;
-  font-size: 14px;
+  font-size: 22px;
 }
 
-.services {
-  display: flex;
-}
-.services > div {
-  margin-left: 12px;
-  margin-right: 12px;
-}
 .lower_nav_bar ul {
   list-style: none;
   display: flex;
@@ -51,24 +41,16 @@ img {
   margin-left: 10px;
   margin-right: 10px;
 }
-.signIn_popup {
-  position: relative;
-  display: inline-block;
-  visibility: hidden;
-  width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 0.3s;
+.fa-bars {
+  margin-left: 10px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
+
+.signIn {
+  margin: 0 10px 0 10px;
+}
+
 .signIn:hover .signIn_popup {
   visibility: visible;
   opacity: 1;
@@ -80,6 +62,11 @@ img {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.cart {
+  margin: 0 10px 0 10px;
+}
+
 .pincode {
   display: flex;
 }
@@ -90,6 +77,7 @@ img {
   display: flex;
   justify-content: center;
   border-color: #4f3267;
+  flex: 1;
 }
 
 /* Style the search input */
@@ -125,7 +113,7 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
-  padding: 12px;
+  padding: 8px;
 }
 .middle_banner img {
   width: 100%;
@@ -155,13 +143,21 @@ footer {
 }
 
 .footer_container {
-  width: 60%;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 8px 0px 8px;
   padding: 20px 0;
 }
 .footer_row1 {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.footer_row1 > div {
+  margin: 0 10px 0 10px;
+  padding-left: 6px;
+  padding-right: 6px;
 }
 footer li {
   list-style: none;
@@ -195,9 +191,128 @@ footer li {
     0px 0px / auto;
   color: rgb(246, 239, 246);
 }
-.logout button {
+.logoutBtn {
+  margin: 0 10px 0 20px;
   background-color: white;
   border: 1px solid #4f3267;
-  color: #4f3267;
+  background-color: #4f3267;
+  color: white;
   border-radius: 4px;
+  padding: 8px;
+}
+.burger-menu {
+  display: none;
+}
+.signIn_cart_logout_container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Media Query for Small Screens (Mobile) */
+@media only screen and (max-width: 576px) {
+  .lower-nav-bar-menu ul {
+    display: none; /* Hide lower_nav_bar items on medium screens */
+    z-index: 1; /* Set a lower z-index to make it appear beneath the burger menu */
+    position: absolute; /* Position the menu absolutely to overlay other content */
+    top: 50px; /* Adjust the top position as needed */
+    left: 0; /* Adjust the left position as needed */
+    background: #fff; /* Add a background color to the menu */
+    width: 100%; /* Make the menu full-width */
+  }
+
+  .footer_row1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .lower-nav-bar-menu.active ul {
+    display: block;
+    position: absolute;
+    top: 86px;
+    left: 8px;
+    opacity: 1;
+    transition: left 0.3s, opacity 0.3s;
+    border: 1px solid black;
+    height: 20%;
+    width: 30%;
+    padding: 4px;
+    border-radius: 8px;
+  }
+
+  .middle_banner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .burger-menu {
+    display: block; /* Display burger menu icon on medium screens */
+    z-index: 2; /* Set a higher z-index to make it visible above the lower nav bar */
+  }
+
+  .lower-nav-bar-menu ul {
+    display: none;
+  }
+
+  .footer_row1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .middle_banner {
+    grid-template-columns: 1fr;
+  }
+  .logo {
+    display: none;
+  }
+  .search-container {
+    display: none;
+  }
+  .signIn_cart_logout_container {
+    margin-left: 186px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+/* Media Query for Tablet Screens (Medium) */
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+  .lower-nav-bar-menu ul {
+    display: none; /* Hide lower_nav_bar items on medium screens */
+    z-index: 1; /* Set a lower z-index to make it appear beneath the burger menu */
+    position: absolute; /* Position the menu absolutely to overlay other content */
+    top: 50px; /* Adjust the top position as needed */
+    left: 0; /* Adjust the left position as needed */
+    background: #fff; /* Add a background color to the menu */
+    width: 100%; /* Make the menu full-width */
+  }
+
+  .footer_row1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .lower-nav-bar-menu.active ul {
+    display: block;
+    position: absolute;
+    top: 86px;
+    left: 8px;
+    opacity: 1;
+    transition: left 0.3s, opacity 0.3s;
+    border: 1px solid black;
+    height: 20%;
+    width: 30%;
+    padding: 4px;
+    border-radius: 8px;
+  }
+
+  .middle_banner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .burger-menu {
+    display: block; /* Display burger menu icon on medium screens */
+    z-index: 2; /* Set a higher z-index to make it visible above the lower nav bar */
+  }
 }
