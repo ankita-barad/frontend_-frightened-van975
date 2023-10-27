@@ -1,3 +1,10 @@
+.upper_nav_bar_signIn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f6f4ff;
+  font-size: 22px;
+}
 .signIn_heading {
   text-align: center;
   font-family: BegumMedium, "Helvetica Neue", Helvetica, Arial, sans-serif;
