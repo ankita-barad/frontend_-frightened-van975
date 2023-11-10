@@ -15,25 +15,26 @@
   <body>
     <nav>
       <div class="top_nav"></div>
-      <div class="upper_nav_bar_signIn">
+      <div class="upper_nav_bar">
+        <div class="burger-menu" onclick="toggleLowerNavBar()">
+          <i class="fas fa-bars"></i>
+        </div>
         <div class="logo">
           <img src="./public/logo.png" alt="" />
         </div>
-        <div class="signin_cart_container">
-          <div class="signIn">
-            <i class="fa-solid fa-user"></i>
-          </div>
+        <div class="signIn_cart_logout_container">
           <div class="cart">
             <i class="fa-solid fa-cart-shopping"></i>
           </div>
         </div>
       </div>
-      <div class="lower_nav_bar">
+
+      <div class="lower-nav-bar-menu lower_nav_bar" id="lowerNavBarMenu">
         <ul>
           <li>BEST SELLERS</li>
           <li>NEW ARRIVALS</li>
-          <li>RINGS</li>
-          <li>EARRINGS</li>
+          <li class="rings">RINGS</li>
+          <li class="earrings">EARRINGS</li>
           <li>BRACELETS & BANGLES</li>
           <li>SOLITAIRES</li>
           <li>SPECIAL DEALS</li>
@@ -144,7 +145,7 @@
       password: document.getElementById("password").value,
     };
     console.log(userDetials);
-    fetch("https://jewelslane.onrender.com/user/login", {
+    fetch("http://localhost:3300/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -162,4 +163,8 @@
       .catch((err) => console.log(err));
   };
   form.addEventListener("submit", onSignin);
+  function toggleLowerNavBar() {
+    var lowerNavBarMenu = document.getElementById("lowerNavBarMenu");
+    lowerNavBarMenu.classList.toggle("active");
+  }
 </script>

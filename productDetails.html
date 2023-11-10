@@ -16,6 +16,9 @@
     <nav>
       <div class="top_nav"></div>
       <div class="upper_nav_bar">
+        <div class="burger-menu" onclick="toggleLowerNavBar()">
+          <i class="fas fa-bars"></i>
+        </div>
         <div class="logo">
           <img src="./public/logo.png" alt="" />
         </div>
@@ -23,31 +26,29 @@
           <input type="text" name="search" id="search" placeholder="search" />
           <button type="submit"><i class="fa fa-search"></i></button>
         </div>
-        <div class="signin_cart_container">
-          <div class="signIn">
-            <i class="fa-solid fa-user"></i>
-          </div>
+        <div class="signIn_cart_logout_container">
           <div class="cart">
             <i class="fa-solid fa-cart-shopping"></i>
           </div>
           <button class="logoutBtn">LOGOUT</button>
         </div>
       </div>
-      <div class="lower_nav_bar">
+      <div class="lower-nav-bar-menu lower_nav_bar" id="lowerNavBarMenu">
         <ul>
           <li>BEST SELLERS</li>
           <li>NEW ARRIVALS</li>
-          <li>RINGS</li>
-          <li>EARRINGS</li>
-          <li>BRACELETS & BANGLES</li>
-          <li>SOLITAIRES</li>
-          <li>SPECIAL DEALS</li>
-          <li>OTHER JEWELLERY</li>
-          <li>GIFTING</li>
+          <li class="rings">RINGS</li>
+          <li class="rings">EARRINGS</li>
+          <li class="rings">BRACELETS & BANGLES</li>
+          <li class="rings">SOLITAIRES</li>
+          <li class="rings">SPECIAL DEALS</li>
+          <li class="rings">OTHER JEWELLERY</li>
+          <li class="rings">GIFTING</li>
         </ul>
       </div>
     </nav>
     <div id="product_details_container"></div>
+    <div id="custom-alert" class="custom-alert"></div>
     <footer>
       <div class="footer_container">
         <div class="footer_row1">
@@ -118,10 +119,12 @@
 </html>
 <script>
   const id = window.location.search.split("=")[1];
-  fetch(`https://jewelslane.onrender.com/product/${id}`, {
+  const token = localStorage.getItem("token");
+  fetch(`http://localhost:3300/product/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   })
     .then((res) => res.json())
@@ -132,11 +135,11 @@
     .catch((err) => console.log(err));
 
   function addToCartAction(productId) {
-    fetch(`https://jewelslane.onrender.com/cart/`, {
+    fetch(`http://localhost:3300/cart/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         productId,
@@ -221,12 +224,21 @@
     addToCart.setAttribute("class", "cartBtn");
     addToCart.setAttribute("data-set", el._id);
 
+    function showCustomAlert(message) {
+      const customAlert = document.getElementById("custom-alert");
+      customAlert.textContent = message;
+      customAlert.style.left = "50%";
+      setTimeout(() => {
+        customAlert.style.left = "-100%";
+      }, 2000); // Hide the alert after 2 seconds (adjust as needed)
+    }
+
     addToCart.addEventListener("click", (e) => {
       console.log(e.target.dataset.set);
       const token = localStorage.getItem("token");
       if (token) {
         addToCartAction(e.target.dataset.set);
-        alert("Product added to cart");
+        showCustomAlert("Product added to cart");
       } else {
         window.location.href = "./signUp.html";
       }
@@ -246,5 +258,15 @@
   let cart = document.querySelector(".cart");
   cart.addEventListener("click", () => {
     window.location.href = "./cart.html";
+  });
+
+  function toggleLowerNavBar() {
+    var lowerNavBarMenu = document.getElementById("lowerNavBarMenu");
+    lowerNavBarMenu.classList.toggle("active");
+  }
+
+  let rings = document.querySelector(".rings");
+  rings.addEventListener("click", () => {
+    window.location.href = "./product.html";
   });
 </script>

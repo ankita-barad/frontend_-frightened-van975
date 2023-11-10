@@ -71,8 +71,22 @@
       .catch((err) => console.log(err));
   }
 
+  function deleteCartItem(cartId, productId) {
+    fetch(`http://localhost:3300/cart/${cartId}/product/${productId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then(() => {
+        fetchData(); // Refresh the page after deleting the item
+      })
+      .catch((err) => console.log(err));
+  }
+
   function fetchData() {
-    fetch(`https://jewelslane.onrender.com/cart/`, {
+    fetch(`http://localhost:3300/cart/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -134,7 +148,11 @@
       select_heading.textContent = "Quantity";
 
       let quantitySelect = document.createElement("select");
-      console.log(el.quantity);
+      // console.log(el.quantity);
+
+      let deleteItem = document.createElement("button");
+      deleteItem.setAttribute("class", "delete_item");
+      deleteItem.innerText = "DELETE";
 
       for (let i = 1; i <= 5; i++) {
         const option = document.createElement("option");
@@ -159,7 +177,12 @@
         updateQuantity(data._id, e.target.value, el.product._id);
       });
 
-      select_heading_quantiy.append(select_heading, quantitySelect);
+      deleteItem.addEventListener("click", () => {
+        console.log("cartId", data._id, "productId", el.product._id);
+        deleteCartItem(data._id, el.product._id);
+      });
+
+      select_heading_quantiy.append(select_heading, quantitySelect, deleteItem);
       image_container.append(image);
       product_detail_container.append(name, price, select_heading_quantiy);
       image_product_details_conatiner.append(

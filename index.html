@@ -27,13 +27,16 @@
           <button type="submit"><i class="fa fa-search"></i></button>
         </div>
         <div class="signIn_cart_logout_container">
+          <div class="user-info" style="display: none">
+            <span id="user-name"></span>
+          </div>
           <div class="signIn">
             <i class="fa-solid fa-user"></i>
           </div>
           <div class="cart">
             <i class="fa-solid fa-cart-shopping"></i>
           </div>
-          <!-- <button class="logoutBtn">LOGOUT</button> -->
+          <button class="logoutBtn" style="display: none">LOGOUT</button>
         </div>
       </div>
 
@@ -174,6 +177,19 @@
       window.location.href = "./index.html";
     }
   });
+
+  let loggedInUser = localStorage.getItem("user");
+  loggedInUser = JSON.parse(loggedInUser);
+  let firstName = loggedInUser.firstName;
+  console.log(firstName);
+
+  if (loggedInUser) {
+    const userElement = document.querySelector(".user-info");
+    const userNameElement = document.getElementById("user-name");
+    userNameElement.textContent = `Hello, ${firstName}`;
+    userElement.style.display = "flex";
+    logoutBtn.style.display = "block";
+  }
 
   function toggleLowerNavBar() {
     var lowerNavBarMenu = document.getElementById("lowerNavBarMenu");

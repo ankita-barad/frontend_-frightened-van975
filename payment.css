@@ -1,3 +1,15 @@
 .first_last_name_container {
   margin-bottom: 20px;
 }
+.custom-alert {
+  display: none;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #f6f4ff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}

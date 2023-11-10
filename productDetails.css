@@ -84,3 +84,29 @@ body {
   margin: 10px 0 3px 0;
   padding: 16px 0 16px 0;
 }
+.custom-alert {
+  position: fixed;
+  top: 0; /* Display at the top of the page */
+  left: -100%; /* Initially hidden on the left side */
+  transform: translate(0, 0);
+  background-color: #f6f4ff;
+  padding: 10px 20px;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: left 0.5s ease-in-out;
+  /* z-index: 9999; */
+}
+
+/* Media Query for Small Screens (Mobile) */
+@media only screen and (max-width: 576px) {
+  #product_details_container {
+    flex-direction: column;
+  }
+}
+
+/* Media Query for Tablet Screens (Medium) */
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+  #product_details_container {
+    flex-direction: column;
+  }
+}

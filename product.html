@@ -27,16 +27,13 @@
           <button type="submit"><i class="fa fa-search"></i></button>
         </div>
         <div class="signIn_cart_logout_container">
-          <div class="signIn">
-            <i class="fa-solid fa-user"></i>
-          </div>
-          <div class="cart">
+          <div class="cart" id="cart-logo">
             <i class="fa-solid fa-cart-shopping"></i>
           </div>
           <button class="logoutBtn">LOGOUT</button>
         </div>
       </div>
-      <div class="lower_nav_bar">
+      <div class="lower-nav-bar-menu lower_nav_bar" id="lowerNavBarMenu">
         <ul>
           <li>BEST SELLERS</li>
           <li>NEW ARRIVALS</li>
@@ -61,7 +58,10 @@
           <div id="sizes" class="filter_item"></div>
         </form>
       </div>
-      <div id="products_conatiner"></div>
+      <div id="products_conatiner">
+        <div class="loader" id="loader"></div>
+        <p class="loading-message">Loading the products. Please wait...</p>
+      </div>
     </div>
     <footer>
       <div class="footer_container">
@@ -140,24 +140,30 @@
   const appliedFilters = {};
 
   function fetchData() {
+    // const loader = document.getElementById("loader");
+    // loader.style.display = "block"; // Show the loader while fetching data
     const filters = new URLSearchParams(appliedFilters);
-    fetch(
-      `https://jewelslane.onrender.com/product/${filters ? `?${filters}` : ""}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    const token = localStorage.getItem("token");
+    fetch(`http://localhost:3300/product/${filters ? `?${filters}` : ""}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((res) => {
+        // loader.style.display = "none"; // Hide the loader when data is loaded
         if (res) {
           console.log(res.products);
           displayProduct(res.products);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        // loader.style.display = "none";
+        // loadingMessage.style.display = "none";
+      });
   }
 
   let product_container = document.getElementById("products_conatiner");
@@ -317,4 +323,12 @@
       el.append(filterItemContainer);
     });
   }
+  function toggleLowerNavBar() {
+    var lowerNavBarMenu = document.getElementById("lowerNavBarMenu");
+    lowerNavBarMenu.classList.toggle("active");
+  }
+
+  document.getElementById("cart-logo").addEventListener("click", function () {
+    window.location.href = "./cart.html";
+  });
 </script>

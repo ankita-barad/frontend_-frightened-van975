@@ -212,13 +212,20 @@ footer li {
 /* Media Query for Small Screens (Mobile) */
 @media only screen and (max-width: 576px) {
   .lower-nav-bar-menu ul {
-    display: none; /* Hide lower_nav_bar items on medium screens */
-    z-index: 1; /* Set a lower z-index to make it appear beneath the burger menu */
-    position: absolute; /* Position the menu absolutely to overlay other content */
-    top: 50px; /* Adjust the top position as needed */
-    left: 0; /* Adjust the left position as needed */
-    background: #fff; /* Add a background color to the menu */
-    width: 100%; /* Make the menu full-width */
+    display: none;
+    z-index: 1;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: #fff;
+    width: 100%;
+  }
+  .upper_nav_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f6f4ff;
+    font-size: 22px;
   }
 
   .footer_row1 {
@@ -226,19 +233,25 @@ footer li {
     flex-wrap: wrap;
     justify-content: space-between;
   }
+  .lower-nav-bar-menu ul li {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 16px;
+  }
 
   .lower-nav-bar-menu.active ul {
     display: block;
     position: absolute;
-    top: 86px;
+    top: 62px;
     left: 8px;
     opacity: 1;
     transition: left 0.3s, opacity 0.3s;
-    border: 1px solid black;
-    height: 20%;
+    /* border: 1px solid black; */
+    height: 78%;
     width: 30%;
     padding: 4px;
     border-radius: 8px;
+    background-color: #f6f4ff;
   }
 
   .middle_banner {
@@ -246,8 +259,8 @@ footer li {
   }
 
   .burger-menu {
-    display: block; /* Display burger menu icon on medium screens */
-    z-index: 2; /* Set a higher z-index to make it visible above the lower nav bar */
+    display: block;
+    z-index: 2;
   }
 
   .lower-nav-bar-menu ul {
@@ -278,13 +291,19 @@ footer li {
 /* Media Query for Tablet Screens (Medium) */
 @media only screen and (min-width: 577px) and (max-width: 992px) {
   .lower-nav-bar-menu ul {
-    display: none; /* Hide lower_nav_bar items on medium screens */
-    z-index: 1; /* Set a lower z-index to make it appear beneath the burger menu */
-    position: absolute; /* Position the menu absolutely to overlay other content */
-    top: 50px; /* Adjust the top position as needed */
-    left: 0; /* Adjust the left position as needed */
-    background: #fff; /* Add a background color to the menu */
-    width: 100%; /* Make the menu full-width */
+    display: none;
+    z-index: 1;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: #fff;
+    width: 100%;
+  }
+
+  .lower-nav-bar-menu ul li {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 16px;
   }
 
   .footer_row1 {
@@ -300,11 +319,12 @@ footer li {
     left: 8px;
     opacity: 1;
     transition: left 0.3s, opacity 0.3s;
-    border: 1px solid black;
-    height: 20%;
+    /* border: 1px solid black; */
+    height: 78%;
     width: 30%;
     padding: 4px;
     border-radius: 8px;
+    background-color: #f6f4ff;
   }
 
   .middle_banner {
@@ -312,7 +332,7 @@ footer li {
   }
 
   .burger-menu {
-    display: block; /* Display burger menu icon on medium screens */
-    z-index: 2; /* Set a higher z-index to make it visible above the lower nav bar */
+    display: block;
+    z-index: 2;
   }
 }

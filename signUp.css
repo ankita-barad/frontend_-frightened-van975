@@ -1,4 +1,4 @@
-.upper_nav_bar_signUp {
+.upper_nav_bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,8 +12,8 @@
   font-size: 20px;
 }
 .signUp_container {
-  max-width: 20%;
-  margin: 0 auto;
+  width: 36%;
+  margin: 12px auto;
 }
 form {
   display: flex;
@@ -78,4 +78,21 @@ input:focus {
   text-align: center;
   font-family: InterRegular, "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 16px 0px;
+}
+.fa-solid {
+  margin-right: 24px;
+}
+
+/* Media Query for Small Screens (Mobile) */
+@media only screen and (max-width: 576px) {
+  .signUp_container {
+    width: 50%;
+  }
+}
+
+/* Media Query for Tablet Screens (Medium) */
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+  .signUp_container {
+    width: 64%;
+  }
 }

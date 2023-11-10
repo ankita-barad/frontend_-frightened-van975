@@ -196,9 +196,21 @@
         </p>
       </div>
     </footer>
+    <div class="custom-alert" id="customAlert">Payment Successful</div>
   </body>
 </html>
 <script>
+  function showCustomAlert(message) {
+    const customAlert = document.getElementById("customAlert");
+    customAlert.textContent = message;
+    customAlert.style.display = "block";
+
+    // Hide the alert after 2 seconds
+    setTimeout(() => {
+      customAlert.style.display = "none";
+    }, 2000);
+  }
+
   let form = document.getElementById("signUpform");
 
   const onPayment = (e) => {
@@ -227,7 +239,7 @@
       cvv,
     };
     if (paymentDetails) {
-      alert("payment successful");
+      showCustomAlert("Payment Successful");
       window.location.href = "./index.html";
     }
   };
